@@ -1,32 +1,26 @@
 def main():
-    # Crear numeros.txt con 10 numeros
-    with open("numeros.txt","w") as archivo:
-        archivo.write("10\n")
-        archivo.write("20\n")
-        archivo.write("15\n")
-        archivo.write("30\n")
-        archivo.write("25\n")
-        archivo.write("8\n")
-        archivo.write("12\n")
-        archivo.write("18\n")
-        archivo.write("22\n")
-        archivo.write("14\n")
+    # 1. Crear numeros.txt con los números del 1 al 10 (uno por línea)
+    with open("numeros.txt", "w") as archivo:
+        for n in range(1, 11):
+            archivo.write(f"{n}\n")
 
-    # Leer y calcular promedio
-    with open("numeros.txt","r") as archivo:
+    # 2. Leer el archivo
+    with open("numeros.txt", "r") as archivo:
         lineas = archivo.readlines()
 
+    # 3. Calcular el promedio
     suma = 0
-    for num in lineas:
-        suma = suma + int(num)
+    for linea in lineas:
+        suma = suma + int(linea)
 
-    promedio = suma / 10
+    promedio = suma / len(lineas)
 
-    # Guardar resultado
-    with open("resultado.txt","w") as archivo:
+    # 4. Guardar el resultado en resultado.txt
+    with open("resultado.txt", "w") as archivo:
         archivo.write(f"El promedio es: {promedio}\n")
 
     print(f"El promedio es: {promedio}")
+
 
 if __name__ == "__main__":
     main()
